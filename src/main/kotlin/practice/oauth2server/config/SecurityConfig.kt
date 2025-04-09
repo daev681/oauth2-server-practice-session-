@@ -19,8 +19,12 @@ class SecurityConfig {
     @Bean
     fun defaultSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
-                .authorizeHttpRequests { it.anyRequest().authenticated() }
-                .formLogin(Customizer.withDefaults())
+                .authorizeHttpRequests { authz ->
+                    authz
+                            .requestMatchers("/oauth2/**", "/.well-known/**").permitAll()
+                            .anyRequest().authenticated()
+                }
+                .formLogin(Customizer.withDefaults()) // ✅ Deprecated 되지 않은 방식
         return http.build()
     }
 

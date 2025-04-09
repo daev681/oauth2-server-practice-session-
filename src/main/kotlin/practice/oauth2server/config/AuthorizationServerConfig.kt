@@ -25,7 +25,9 @@ class AuthorizationServerConfig {
                 .csrf { csrf -> csrf.ignoringRequestMatchers(authorizationServerConfigurer.endpointsMatcher) }
                 .apply(authorizationServerConfigurer)
 
-        return http.build()
+        return http
+                .formLogin(Customizer.withDefaults()) // 로그인 UI 제공
+                .build()
     }
     @Bean
     fun authServerSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
