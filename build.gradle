@@ -25,6 +25,7 @@ dependencies {
 
     // ✅ Spring Authorization Server (호환 버전)
     implementation("org.springframework.security:spring-security-oauth2-authorization-server")
+    implementation("org.springframework.security:spring-security-oauth2-jose") // JWT 관련
 
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
