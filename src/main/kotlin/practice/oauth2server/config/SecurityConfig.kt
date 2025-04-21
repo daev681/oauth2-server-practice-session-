@@ -25,6 +25,9 @@ class SecurityConfig {
                             .anyRequest().authenticated()
                 }
                 .formLogin(Customizer.withDefaults()) // ✅ Deprecated 되지 않은 방식
+                .sessionManagement {
+                    it.sessionFixation().none() // 세션 ID 변경을 방지
+                }
         return http.build()
     }
 
